@@ -1,0 +1,284 @@
+.compact-cyber-footer {
+  position: relative;
+  width: 100%;
+  margin-top: auto;
+  overflow: hidden;
+  background: rgba(10, 15, 30, 0.4);
+  /* Lighter glass */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(0, 240, 255, 0.15);
+  font-family: "Ubuntu", sans-serif;
+  color: #e2e8f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  /* Highly compact padding */
+  box-shadow: inset 0 10px 20px -10px rgba(0, 240, 255, 0.05);
+  min-height: 60px;
+  /* Force small height */
+}
+
+/* --- Content Layout --- */
+.footer-content-row {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  /* Super tight gap */
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* --- Branding Row --- */
+.footer-branding {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  /* in case screen gets super small */
+}
+
+.brand-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #fff, #00F0FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.3));
+}
+
+.brand-separator {
+  color: rgba(0, 240, 255, 0.4);
+  font-size: 0.75rem;
+}
+
+.brand-subtitle {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+/* --- Navigation Links Row --- */
+.footer-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.nav-separator {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+}
+
+.neon-link {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.75rem;
+  /* Small font size */
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0.1rem 0;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.neon-link:hover {
+  color: #fff;
+  text-shadow: 0 0 8px #00F0FF;
+}
+
+/* Minimal Animated Underline */
+.neon-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: #00F0FF;
+  transition: width 0.3s ease, left 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 5px #00F0FF;
+}
+
+.neon-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* --- Neon Border Glow --- */
+.neon-border-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+  box-shadow: 0 0 10px 1px rgba(0, 240, 255, 0.5);
+  opacity: 0.7;
+  animation: borderPulse 4s infinite alternate;
+}
+
+@keyframes borderPulse {
+  0% {
+    opacity: 0.3;
+    box-shadow: 0 0 5px 0px rgba(0, 240, 255, 0.2);
+  }
+
+  100% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px 1px rgba(0, 240, 255, 0.7);
+  }
+}
+
+/* --- Subdued Floating Hexagons --- */
+.hexagon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hex {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 240, 255, 0.02);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.03);
+  animation: floatHex 20s linear infinite;
+}
+
+@keyframes floatHex {
+  0% {
+    transform: translateY(80px) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-80px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.hex-1 {
+  left: 15%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 22s;
+  animation-delay: 2s;
+}
+
+.hex-2 {
+  left: 55%;
+  width: 50px;
+  height: 50px;
+  animation-duration: 30s;
+  animation-delay: 0s;
+}
+
+.hex-3 {
+  left: 85%;
+  width: 25px;
+  height: 25px;
+  animation-duration: 18s;
+  animation-delay: 5s;
+}
+
+/* --- Subdued Glowing Background Particles --- */
+.glow-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gl-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #3b82f6;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 2px #3b82f6;
+  animation: particleDrift 12s ease-in-out infinite alternate;
+}
+
+@keyframes particleDrift {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate(30px, -20px) scale(1.2);
+    opacity: 0.1;
+  }
+}
+
+.gl-particle.p1 {
+  left: 25%;
+  top: 50%;
+  animation-delay: 0s;
+}
+
+.gl-particle.p2 {
+  left: 75%;
+  top: 70%;
+  background: #00F0FF;
+  box-shadow: 0 0 8px 2px #00F0FF;
+  animation-delay: -3s;
+}
+
+.gl-particle.p3 {
+  left: 45%;
+  top: 30%;
+  animation-delay: -7s;
+}
+
+.gl-particle.p4 {
+  left: 85%;
+  top: 20%;
+  background: #00F0FF;
+  box-shadow: 0 0 8px 2px #00F0FF;
+  animation-delay: -1s;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+  .footer-branding {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .brand-separator {
+    display: none;
+  }
+}

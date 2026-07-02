@@ -1,0 +1,11 @@
+[Safe] (0) https://google.com
+[Safe] (0) https://www.google.com
+[Safe] (0) https://github.com
+[Safe] (0) https://www.github.com
+[Safe] (0) https://openai.com
+[Safe] (15) https://facebook.com
+[Safe] (15) https://www.facebook.com
+[Suspicious] (67) https://google-login-check-security.com
+[Malicious] (98) http://paypal-verification-alert.net
+[Malicious] (100) http://192.168.1.1/login.php?verify=1
+[Malicious] (100) http://172.16.0.4/secure/account

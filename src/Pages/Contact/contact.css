@@ -1,0 +1,363 @@
+.contact-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #050914;
+    background-image: radial-gradient(circle at top right, rgba(0, 240, 255, 0.1), transparent 50%),
+        radial-gradient(circle at bottom left, rgba(0, 68, 255, 0.1), transparent 50%);
+    font-family: "Ubuntu", sans-serif;
+    color: #e2e8f0;
+    overflow-x: hidden;
+}
+
+.contact-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+.contact-split-container {
+    display: flex;
+    width: 100%;
+    max-width: 950px;
+    background: rgba(10, 15, 30, 0.6);
+    border-radius: 24px;
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+.contact-left {
+    flex: 1;
+    position: relative;
+    min-height: 500px;
+    background: #02040a;
+}
+
+/* --- Cyber Defense Animation (Left Pane) --- */
+.cyber-animation-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(0, 40, 80, 0.4) 0%, transparent 70%);
+}
+
+.radar-grid {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image:
+        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    transform: perspective(600px) rotateX(60deg) translateZ(-100px);
+    animation: radarPan 20s linear infinite;
+    opacity: 0.5;
+}
+
+.shield-core {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.6));
+    animation: shieldPulse 3s infinite alternate;
+}
+
+.shield-hex {
+    width: 120px;
+    height: 138.56px;
+    background-color: rgba(0, 240, 255, 0.1);
+    border: 2px solid #00f0ff;
+    position: relative;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shield-hex.inner {
+    position: absolute;
+    width: 80px;
+    height: 92.38px;
+    background-color: rgba(0, 240, 255, 0.2);
+    border: 2px solid #fff;
+    box-shadow: inset 0 0 15px #00f0ff;
+    animation: innerSpin 10s linear infinite;
+}
+
+.lock-icon {
+    position: absolute;
+    width: 20px;
+    height: 15px;
+    background: #fff;
+    border-radius: 3px;
+    z-index: 5;
+    box-shadow: 0 0 10px #fff;
+}
+
+.lock-icon::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-radius: 5px 5px 0 0;
+    border-bottom: none;
+}
+
+.orbiting-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid transparent;
+}
+
+.orbit-1 {
+    width: 220px;
+    height: 220px;
+    border-top: 2px solid #00f0ff;
+    border-bottom: 2px solid transparent;
+    animation: orbitSpin 8s linear infinite;
+}
+
+.orbit-2 {
+    width: 300px;
+    height: 300px;
+    border-right: 2px dashed #ff3366;
+    border-left: 2px dashed #ff3366;
+    animation: orbitSpin 12s linear infinite reverse;
+}
+
+.orbit-3 {
+    width: 380px;
+    height: 380px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid #fff;
+    animation: orbitSpin 20s linear infinite;
+}
+
+.scanning-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #00f0ff;
+    box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+    animation: scanLine 4s linear infinite;
+    z-index: 20;
+    opacity: 0.7;
+}
+
+@keyframes orbitSpin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes innerSpin {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes shieldPulse {
+    0% {
+        transform: scale(0.95);
+        filter: drop-shadow(0 0 15px rgba(0, 240, 255, 0.4));
+    }
+
+    100% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 35px rgba(0, 240, 255, 0.8));
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        top: -10%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    90% {
+        opacity: 0.7;
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0;
+    }
+}
+
+@keyframes radarPan {
+    0% {
+        transform: perspective(600px) rotateX(60deg) translateZ(-100px) translateY(0);
+    }
+
+    100% {
+        transform: perspective(600px) rotateX(60deg) translateZ(-100px) translateY(30px);
+    }
+}
+
+.img-overlay-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, transparent, rgba(10, 15, 30, 1));
+    pointer-events: none;
+}
+
+.contact-right {
+    flex: 1.2;
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: transparent;
+}
+
+.contact-form-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 16px;
+}
+
+.contact-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #00f0ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.cyber-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #94a3b8;
+}
+
+.form-group label .required {
+    color: #ef4444;
+}
+
+.name-inputs {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.input-col {
+    flex: 1;
+}
+
+.cyber-input,
+.cyber-textarea {
+    width: 100%;
+    background: rgba(2, 4, 10, 0.6);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.cyber-input:focus,
+.cyber-textarea:focus {
+    border-color: #00f0ff;
+    background: rgba(0, 240, 255, 0.05);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+.cyber-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.contact-submit-btn {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+    background: linear-gradient(#00f0ff);
+    color: black;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.contact-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.6);
+    background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+}
+
+.submit-icon {
+    font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+    .contact-split-container {
+        flex-direction: column;
+    }
+
+    .contact-left {
+        min-height: 300px;
+    }
+
+    .img-overlay-glow {
+        background: linear-gradient(to bottom, transparent, rgba(10, 15, 30, 1));
+    }
+
+    .contact-right {
+        padding: 2rem;
+    }
+
+    .name-inputs {
+        flex-direction: column;
+        gap: 1.8rem;
+    }
+}

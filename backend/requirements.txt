@@ -1,0 +1,9 @@
+Flask
+Flask-SQLAlchemy
+Flask-Cors
+flask-bcrypt
+PyJWT
+PyMySQL
+cryptography
+python-whois
+python-dotenv

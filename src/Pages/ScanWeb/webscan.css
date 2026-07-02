@@ -1,0 +1,362 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+body {
+    background-color: #0b1121;
+    /* Deep navy/black background */
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.15) 0%, transparent 60%),
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    /* Tech grid effect */
+    background-position: center top;
+    color: #e5e7eb;
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: block;
+}
+
+#root {
+    width: 100%;
+}
+
+.web-scan-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Background Shield Decoration - Left */
+.bg-shield-left {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    width: 150px;
+    height: 180px;
+    opacity: 0.1;
+    pointer-events: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'%3E%3Cpath d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z'/%3E%3C/svg%3E") no-repeat center/contain;
+}
+
+/* Background Shield Decoration - Right */
+.bg-shield-right {
+    position: absolute;
+    bottom: 25%;
+    right: 5%;
+    width: 150px;
+    height: 180px;
+    opacity: 0.1;
+    pointer-events: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'%3E%3Cpath d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z'/%3E%3C/svg%3E") no-repeat center/contain;
+}
+
+.scan-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+    letter-spacing: 0.5px;
+}
+
+/* Glass Form Card */
+.scan-form-card {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 12px;
+    padding: 2.5rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #f1f5f9;
+    margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(71, 85, 105, 0.5);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #fff;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    /* Fix padding issues */
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #64748b;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #38bdf8;
+    background: rgba(30, 41, 59, 0.8);
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+}
+
+.form-input {
+    height: 50px;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.subject-textarea {
+    min-height: 50px;
+    height: 50px;
+    resize: none;
+    /* Subjects generally don't need resizing if fixed to a small height, or maybe vertical only */
+}
+
+/* Detect Button */
+.detect-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.detect-btn {
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.1) 0%, rgba(14, 165, 233, 0.4) 100%);
+    border: 1px solid #38bdf8;
+    color: #e0f2fe;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.8rem 4rem;
+    border-radius: 6px;
+    /* Slightly squarer than pill */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 300px;
+}
+
+.detect-btn:hover {
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.2) 0%, rgba(14, 165, 233, 0.6) 100%);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.detect-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.detect-btn:active::after {
+    opacity: 1;
+    transform: scale(1);
+    transition: 0s;
+}
+
+/* Risk Meter */
+.risk-meter-container {
+    width: 100%;
+    max-width: 600px;
+    /* Match button width roughly or slightly wider */
+    margin: 0 auto;
+}
+
+.risk-bars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.risk-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.risk-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    opacity: 0.3;
+    /* Inactive state */
+    box-shadow: 0 0 10px currentColor;
+}
+
+/* Active states for demo - mimicking the image where medium is somewhat active or just titles */
+/* Actually the image shows a gradient bar with "Low Risk", "Medium Risk", "High Risk" labels below */
+/* Let's replicate the IMAGE exactly. It looks like 3 distinct colored segments. */
+
+.risk-bar.green {
+    background-color: #22c55e;
+    box-shadow: 0 0 10px #22c55e;
+}
+
+.risk-bar.orange {
+    background-color: #f97316;
+    box-shadow: 0 0 10px #f97316;
+}
+
+.risk-bar.red {
+    background-color: #ef4444;
+    box-shadow: 0 0 15px #ef4444;
+}
+
+/* In the image, it looks like a continuous bar split into 3, glowing at the split points? 
+   Actually it looks like 3 separate bars: Green--Yellow--Red. 
+   And they have a "light" center. */
+
+.risk-segmented-bar {
+    display: flex;
+    width: 100%;
+    height: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 5px;
+}
+
+.segment {
+    flex: 1;
+    height: 8px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.segment.low {
+    background: linear-gradient(90deg, #10b981 0%, #34d399 50%, #10b981 100%);
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+}
+
+.segment.medium {
+    background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 50%, #f59e0b 100%);
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+}
+
+.segment.high {
+    background: linear-gradient(90deg, #ef4444 0%, #f87171 50%, #ef4444 100%);
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
+}
+
+/* Glow spots on top of segments? image has white hotspots. */
+.segment::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    filter: blur(1px);
+}
+
+.risk-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10%;
+    /* Indent labels slightly to center under segments */
+    box-sizing: border-box;
+}
+
+.risk-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    flex: 1;
+}
+
+.risk-label.low {
+    color: #34d399;
+}
+
+.risk-label.medium {
+    color: #fbbf24;
+}
+
+.risk-label.high {
+    color: #f87171;
+}
+
+
+/* Info Box */
+.info-box {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 12px 20px;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cbd5e1;
+    /* lighter slate text */
+    font-size: 0.9rem;
+    backdrop-filter: blur(4px);
+}
+
+.info-icon {
+    font-size: 1.2rem;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}

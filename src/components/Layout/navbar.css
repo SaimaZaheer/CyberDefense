@@ -1,0 +1,451 @@
+:root {
+  --nav-bg: #020617;
+  --nav-text: #e2e8f0;
+  --accent-color: #00f0ff;
+  --accent-hover: #00d1e0;
+  /* Darker variant of #00f0ff */
+  --sidebar-width: 250px;
+  --sidebar-collapsed-width: 80px;
+  --navbar-height: 80px;
+}
+
+.navbar-container {
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  font-family: "Ubuntu", sans-serif;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #00F0FF;
+  /* Brand color */
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.logo-text .accent {
+  color: #00F0FF;
+
+  text-shadow: none;
+}
+
+/* ============================
+   Horizontal Layout (Home)
+   ============================ */
+.navbar-container[data-layout="horizontal"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 max(4rem, calc((100% - 1200px) / 2));
+}
+
+.navbar-container[data-layout="horizontal"] .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-container[data-layout="horizontal"] .navbar-menu {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbar-container[data-layout="horizontal"] .navbar-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+
+
+
+
+/* .navbar-menu previously defined above */
+
+.navbar-container[data-layout="horizontal"] .menu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--nav-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.navbar-container[data-layout="horizontal"] .menu-link:hover {
+  color: var(--accent-color);
+}
+
+.navbar-container[data-layout="horizontal"] .collapse-btn {
+  display: none;
+}
+
+
+/* ============================
+   Vertical Layout (Sidebar)
+   ============================ */
+.navbar-container[data-layout="vertical"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-container[data-layout="vertical"].collapsed {
+  width: var(--sidebar-collapsed-width);
+  padding: 2rem 0.5rem;
+  /* Reduce padding to center items */
+}
+
+.navbar-container[data-layout="vertical"] .navbar-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  padding: 0 0.5rem;
+  min-height: 40px;
+  /* Ensure height stability */
+}
+
+.navbar-container[data-layout="vertical"].collapsed .navbar-brand {
+  justify-content: center;
+  padding: 0;
+}
+
+.navbar-container[data-layout="vertical"].collapsed .logo-text {
+  opacity: 0;
+  width: 0;
+  margin: 0;
+}
+
+.navbar-container[data-layout="vertical"] .navbar-menu {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.navbar-container[data-layout="vertical"] .menu-item {
+  width: 100%;
+}
+
+.navbar-container[data-layout="vertical"] .menu-link {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  color: var(--nav-text);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.navbar-container[data-layout="vertical"] .menu-link:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  /* Low opacity accent */
+  color: var(--accent-color);
+  transform: translateX(5px);
+}
+
+.navbar-container[data-layout="vertical"].collapsed .menu-link:hover {
+  transform: none;
+  /* No shift when collapsed */
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.navbar-container[data-layout="vertical"].collapsed .menu-link {
+  justify-content: center;
+  padding: 0.8rem 0;
+}
+
+.navbar-container[data-layout="vertical"] .icon {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+}
+
+.navbar-container[data-layout="vertical"] .text {
+  margin-left: 1rem;
+  opacity: 1;
+  transition: opacity 0.2s ease, margin 0.3s;
+}
+
+.navbar-container[data-layout="vertical"].collapsed .text {
+  opacity: 0;
+  width: 0;
+  margin-left: 0;
+  overflow: hidden;
+}
+
+/* Collapse Button Styling */
+.collapse-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.collapse-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Get Started Button (Action Area) */
+.navbar-actions {
+  margin-left: 1rem;
+}
+
+.navbar-container[data-layout="vertical"] .navbar-actions {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.navbar-container[data-layout="vertical"].collapsed .navbar-actions {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-container[data-layout="vertical"] .navbar-actions .btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 12px;
+}
+
+.navbar-container[data-layout="vertical"].collapsed .navbar-actions .btn-primary {
+  padding: 0.8rem 0;
+  /* matches .menu-link collapsed padding */
+  height: auto;
+  width: 100%;
+  margin: 0;
+  font-size: 0.8rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  box-shadow: none;
+  color: var(--nav-text);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  /* subtle border to match default look */
+  transition: all 0.3s ease;
+}
+
+.navbar-container[data-layout="vertical"].collapsed .navbar-actions .btn-primary:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--accent-color);
+  transform: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-color), #00b3bf);
+  color: #050914;
+  /* Dark text for better contrast on neon cyan */
+  white-space: nowrap;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  /* Pillow shape for modern look */
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 14px 0 rgba(0, 240, 255, 0.39);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.23);
+}
+
+/* Mobile Responsive for Horizontal */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 100 !important;
+  /* Ensure hamburger stays above menu */
+}
+
+@media (max-width: 768px) {
+  .navbar-container[data-layout="horizontal"] .mobile-toggle {
+    display: block;
+  }
+
+  .navbar-container[data-layout="horizontal"] .navbar-menu {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--nav-bg);
+    flex-direction: column;
+    padding: 6rem 2rem 2rem;
+    /* Add top padding so it doesn't cover brand/toggle */
+    gap: 1.5rem;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .navbar-container[data-layout="horizontal"] .navbar-menu.mobile-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Hide desktop action area, move the button INTO the mobile menu layout */
+  .navbar-container[data-layout="horizontal"] .navbar-actions {
+    display: none;
+  }
+
+  /* Insert action button structurally at the bottom of the open mobile menu list */
+  .navbar-container[data-layout="horizontal"] .navbar-menu.mobile-open .action-item {
+    display: list-item;
+    margin-top: 1rem;
+    width: 100%;
+    align-self: center;
+  }
+}
+
+/* Main Content Layout Adjustments */
+.main-content {
+  transition: margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 100vh;
+}
+
+.main-content.home-layout {
+  padding-top: var(--navbar-height);
+  width: 100%;
+}
+
+/* Vertical Layout Mobile App Style Bottom Nav */
+@media (max-width: 768px) {
+  .navbar-container[data-layout="vertical"] {
+    height: 70px;
+    width: 100% !important;
+    flex-direction: row;
+    top: auto;
+    bottom: 0;
+    padding: 0 0.5rem;
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1000;
+    background-color: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(10px);
+  }
+
+  .navbar-container[data-layout="vertical"] .navbar-brand {
+    display: none;
+  }
+
+  .navbar-container[data-layout="vertical"] .navbar-menu {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+  }
+
+  .navbar-container[data-layout="vertical"] .menu-item {
+    width: auto;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-container[data-layout="vertical"] .menu-link {
+    flex-direction: column;
+    padding: 0.4rem;
+    border-radius: 8px;
+    background: transparent !important;
+    transform: none !important;
+    align-items: center;
+  }
+
+  .navbar-container[data-layout="vertical"] .icon {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  .navbar-container[data-layout="vertical"] .text {
+    font-size: 0.65rem;
+    margin: 0.2rem 0 0 0;
+    opacity: 1 !important;
+    width: auto !important;
+    display: block;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .navbar-container[data-layout="vertical"].collapsed .text {
+    opacity: 1;
+    width: auto;
+    overflow: visible;
+  }
+
+  /* Override inline styles from App.jsx for mobile */
+  .main-content:not(.home-layout):not(.auth-layout) {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding-bottom: 80px !important;
+  }
+}
